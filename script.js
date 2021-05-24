@@ -156,25 +156,6 @@ function add() {
     }
 
 
-
-
-    function deleteItem(event) {
-      // retrieve the name of the task we want to delete
-      let dataTask = event.target.getAttribute('data-task');
-
-      // open a database transaction and delete the task, finding it by the name we retrieved above
-      let transaction = db.transaction(["vinyl"], "readwrite");
-      let request = transaction.objectStore("vinyl").delete(dataTask);
-
-      // report that the data item has been deleted
-      transaction.oncomplete = function() {
-        // delete the parent of the button, which is the list item, so it no longer is displayed
-        event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-        note.innerHTML += '<li>Task \"' + dataTask + '\" deleted.</li>';
-      };
-    };
-
-
   function deleteResult(event, dataTrash) {
       //    list.textContent = '';
 
